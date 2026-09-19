@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Litto Motors - Product Catalogue | Katwe Bypass, Masaka City</title>
+    
+    <style>
+        /* ==========================================================================
+           1. GLOBAL & RESET STYLES
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #1e3a8a;    /* Deep Navy Blue */
+            --secondary-color: #0284c7;  /* Bright Accent Blue */
+            --accent-color: #f59e0b;     /* Amber Gold */
+            --dark-color: #0f172a;       /* Dark Slate Body Text */
+            --light-bg: #f8fafc;         /* Light Gray Background */
+            --card-bg: #ffffff;         /* White Card Background */
+            --border-color: #e2e8f0;     /* Border Light Gray */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ==========================================================================
+           2. NAVIGATION BAR
+           ========================================================================== */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--secondary-color);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        /* ==========================================================================
+           3. HERO SECTION
+           ========================================================================== */
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(30, 58, 138, 0.8)), 
+                        url('https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: #ffffff;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ==========================================================================
+           4. TOOLBAR (SEARCH, FILTER & SORT)
+           ========================================================================== */
+        .catalogue-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 40px;
+        }
+
+        .filter-toolbar {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            margin-bottom: 35px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary-color);
+        }
+
+        /* ==========================================================================
+           5. PRODUCT CATALOGUE GRID & CARDS
+           ========================================================================== */
+        .vehicle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 30px;
+        }
+
+        .vehicle-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .vehicle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background-color: #f1f5f9;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .card-price {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .card-description {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .btn-secondary {
+            width: 100%;
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 10px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            border: 1px dashed #cbd5e1;
+        }
+
+        .no-results h3 {
+            font-size: 1.4rem;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        /* ==========================================================================
+           6. MODAL POPUP
+           ========================================================================== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border-radius: var(--radius-lg);
+            max-width: 650px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            animation: modalSlide 0.3s ease;
+        }
+
+        @keyframes modalSlide {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            position: relative;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0,0,0,0.6);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .modal-close:hover {
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .modal-title {
+            font-size: 1.6rem;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .modal-meta-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .modal-price {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .modal-status {
+            display: inline-block;
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .modal-description {
+            font-size: 0.95rem;
+            color: #334155;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        /* ==========================================================================
+           7. ABOUT US SECTION
+           ========================================================================== */
+        .about-section {
+            background-color: #ffffff;
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: #475569;
+            font-size: 1.05rem;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ==========================================================================
+           8. CONTACT & ENQUIRY SECTION
+           ========================================================================== */
+        .contact-section {
+            padding: 60px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+        }
+
+        .contact-info-card {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 35px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+        }
+
+        .info-item strong {
+            display: block;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .contact-form-card {
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark-color);
+        }
+
+        .alert-message {
+            display: none;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .alert-success {
+            background-color: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+
+        .alert-error {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+        }
+
+        /* ==========================================================================
+           9. FOOTER
+           ========================================================================== */
+        .footer {
+            background-color: var(--dark-color);
+            color: #94a3b8;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer h3 {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            border-top: 1px solid #334155;
+            padding-top: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* ==========================================================================
+           10. RESPONSIVE DESIGN
+           ========================================================================== */
+        @media (max-width: 900px) {
+            .filter-toolbar {
+                grid-template-columns: 1fr;
+            }
+            .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                flex-direction: column;
+                gap: 0;
+                box-shadow: var(--shadow-md);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-menu.active {
+                max-height: 300px;
+            }
+
+            .nav-item {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 15px;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-link.active::after {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">LITTO <span>MOTORS</span></a>
+            <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">☰</button>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="#vehicles" class="nav-link">Vehicles</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero" id="home">
+            <div class="container hero-content">
+                <h1>Find Your Perfect Vehicle</h1>
+                <p>Quality vehicles at competitive prices from Litto Motors, Katwe Bypass, Masaka City.</p>
+                <a href="#vehicles" class="btn-primary" id="view-vehicles-btn">View Vehicles</a>
+            </div>
+        </section>
+
+        <!-- PRODUCT CATALOGUE SECTION -->
+        <section class="catalogue-section container" id="vehicles">
+            <h2 class="section-title">Available Vehicles</h2>
+            <p class="section-subtitle">Explore our inventory of well-maintained premium automobiles</p>
+
+            <!-- SEARCH AND FILTER CONTROLS TOOLBAR -->
+            <div class="filter-toolbar">
+                <input type="text" id="search-input" class="form-control" placeholder="Search vehicles by name, category, or year...">
+                
+                <select id="category-select" class="form-control">
+                    <option value="All">All Categories</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="Luxury Sedan">Luxury Sedan</option>
+                    <option value="Pickup">Pickup</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="Electric">Electric</option>
+                    <option value="Family Van">Family Van</option>
+                </select>
+
+                <select id="sort-select" class="form-control">
+                    <option value="default">Default Sort</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="name-asc">Name: A-Z</option>
+                    <option value="name-desc">Name: Z-A</option>
+                </select>
+            </div>
+
+            <!-- PRODUCT GRID CONTAINING DYNAMIC CARDS -->
+            <div class="vehicle-grid" id="vehicle-grid">
+                <!-- Vehicle Cards are injected dynamically using JavaScript -->
+            </div>
+        </section>
+
+        <!-- ABOUT US SECTION -->
+        <section class="about-section" id="about">
+            <div class="container about-grid">
+                <div class="about-text">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">About Litto Motors</h2>
+                    <p>Litto Motors is a leading automotive dealership strategically located along Katwe Bypass in Masaka City, Uganda. We pride ourselves on delivering top-tier imported and local vehicles suited for Ugandan road conditions.</p>
+                    <p>Whether you are searching for an eco-friendly hybrid, a rugged 4x4 pickup, or a luxurious executive sedan, our knowledgeable team ensures a transparent, fair, and seamless purchasing experience.</p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80" alt="Litto Motors Showroom" class="about-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT & ENQUIRY SECTION -->
+        <section class="contact-section container" id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Visit our Masaka showroom or send us a direct enquiry</p>
+
+            <div class="contact-grid">
+                <!-- Contact Information Card -->
+                <div class="contact-info-card">
+                    <h3>Contact Information</h3>
+                    <div class="info-item">
+                        <strong>Showroom Address</strong>
+                        <p>Litto Motors Dealership<br>Katwe Bypass, Masaka City, Uganda</p>
+                    </div>
+                    <div class="info-item">
+                        <strong>Phone Contact</strong>
+                        <p>+256 700 123 456<br>+256 772 987 654</p>
+                    </div>
+                    <div class="info-item">
+                        <strong>Email Address</strong>
+                        <p>info@littomotors.co.ug</p>
+                    </div>
+                    <div class="info-item">
+                        <strong>Working Hours</strong>
+                        <p>Mon - Sat: 8:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+
+                <!-- Enquiry Form -->
+                <div class="contact-form-card">
+                    <div id="alert-box" class="alert-message"></div>
+
+                    <form id="enquiry-form" novalidate>
+                        <div class="form-group">
+                            <label for="fullname">Full Name *</label>
+                            <input type="text" id="fullname" class="form-control" placeholder="e.g. John Mukasa">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" class="form-control" placeholder="e.g. john@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="e.g. 0700000000">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vehicle-select">Select Vehicle of Interest *</label>
+                            <select id="vehicle-select" class="form-control">
+                                <option value="">-- Choose a Vehicle --</option>
+                                <!-- Populated by JS -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" class="form-control" rows="4" placeholder="How can we help you?"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary" style="width: 100%;">Submit Enquiry</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- VIEW DETAILS MODAL -->
+    <div class="modal" id="vehicle-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img id="modal-img" src="" alt="" class="modal-image">
+                <button class="modal-close" id="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3 id="modal-title" class="modal-title"></h3>
+                <div class="modal-meta-row">
+                    <span id="modal-year"></span>
+                    <span>•</span>
+                    <span id="modal-category"></span>
+                </div>
+                <div id="modal-price" class="modal-price"></div>
+                <div><span class="modal-status">Status: In Stock</span></div>
+                <p id="modal-description" class="modal-description"></p>
+                <button class="btn-secondary" id="modal-inquire-btn">Enquire About This Vehicle</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+        <div class="container">
+            <h3>Litto Motors</h3>
+            <p>"Quality Vehicles. Reliable Service."</p>
+            <p>Katwe Bypass, Masaka City, Uganda</p>
+            <p class="copyright">Copyright &copy; 2026 Litto Motors. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        /* ==========================================================================
+           1. VEHICLE DATA STORAGE (ARRAY OF OBJECTS)
+           ========================================================================== */
+        const vehicles = [
+            {
+                id: 1,
+                name: "Toyota Harrier",
+                year: 2025,
+                category: "SUV",
+                price: 85000000,
+                image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80",
+                description: "Sleek and premium SUV offering effortless performance, luxurious leather interior, dynamic radar cruise control, and outstanding Masaka terrain adaptability."
+            },
+            {
+                id: 2,
+                name: "Toyota Prius",
+                year: 2025,
+                category: "Hybrid",
+                price: 70000000,
+                image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=800&q=80",
+                description: "Ultra-efficient hybrid drivetrain delivering unmatched fuel savings, smooth automatic transmission, advanced safety features, and smart keyless entry."
+            },
+            {
+                id: 3,
+                name: "Tesla Model Y",
+                year: 2025,
+                category: "Electric",
+                price: 150000000,
+                image: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=800&q=80",
+                description: "100% Electric crossover with instant acceleration, minimalist luxury interior, expansive glass roof, Autopilot capability, and zero emissions."
+            },
+            {
+                id: 4,
+                name: "Ford Ranger",
+                year: 2025,
+                category: "Pickup",
+                price: 120000000,
+                image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80",
+                description: "Heavy-duty 4x4 pickup truck designed for tough utility, impressive towing capacity, modern infotainment deck, and off-road reliability."
+            },
+            {
+                id: 5,
+                name: "Mercedes-Benz S-Class",
+                year: 2025,
+                category: "Luxury Sedan",
+                price: 150000000,
+                image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80",
+                description: "The pinnacle of executive luxury. Superior ride comfort, ambient cabin lighting, Burmester sound system, and top-tier safety technology."
+            },
+            {
+                id: 6,
+                name: "Honda Odyssey",
+                year: 2025,
+                category: "Family Van",
+                price: 95000000,
+                image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80",
+                description: "Spacious 8-seater family van equipped with power sliding doors, flexible seating arrangements, rear climate control, and smooth V6 power."
+            },
+            {
+                id: 7,
+                name: "Toyota RAV4",
+                year: 2025,
+                category: "SUV",
+                price: 90000000,
+                image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80",
+                description: "Versatile and reliable compact SUV with intelligent All-Wheel Drive, impressive ground clearance, modern design, and high resale value."
+            },
+            {
+                id: 8,
+                name: "BMW 5 Series",
+                year: 2025,
+                category: "Sedan",
+                price: 130000000,
+                image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80",
+                description: "Sporty yet sophisticated executive sedan offering razor-sharp handling, twin-power turbo performance, driver-centric cockpit, and digital dash display."
+            }
+        ];
+
+        /* ==========================================================================
+           2. DOM ELEMENTS SELECTION
+           ========================================================================== */
+        const vehicleGrid = document.getElementById('vehicle-grid');
+        const searchInput = document.getElementById('search-input');
+        const categorySelect = document.getElementById('category-select');
+        const sortSelect = document.getElementById('sort-select');
+        const vehicleSelectModal = document.getElementById('vehicle-select');
+
+        // Modal Elements
+        const modal = document.getElementById('vehicle-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalYear = document.getElementById('modal-year');
+        const modalCategory = document.getElementById('modal-category');
+        const modalPrice = document.getElementById('modal-price');
+        const modalDesc = document.getElementById('modal-description');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+        const modalInquireBtn = document.getElementById('modal-inquire-btn');
+
+        // Navigation Elements
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Form Elements
+        const enquiryForm = document.getElementById('enquiry-form');
+        const alertBox = document.getElementById('alert-box');
+
+        /* ==========================================================================
+           3. HELPER FUNCTIONS
+           ========================================================================== */
+        // Format Currency in UGX
+        function formatUGX(amount) {
+            return 'UGX ' + amount.toLocaleString('en-US');
+        }
+
+        // Render Vehicle Cards to DOM
+        function renderVehicles(vehicleList) {
+            vehicleGrid.innerHTML = '';
+
+            if (vehicleList.length === 0) {
+                vehicleGrid.innerHTML = `
+                    <div class="no-results">
+                        <h3>No vehicles found</h3>
+                        <p>Try adjusting your search criteria or filter options.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            vehicleList.forEach(vehicle => {
+                const card = document.createElement('article');
+                card.className = 'vehicle-card';
+                card.innerHTML = `
+                    <div class="card-image-wrapper">
+                        <img src="${vehicle.image}" alt="${vehicle.name}" class="card-image" loading="lazy">
+                        <span class="category-badge">${vehicle.category}</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">${vehicle.name}</h3>
+                        <div class="card-meta">Model Year: ${vehicle.year}</div>
+                        <div class="card-price">${formatUGX(vehicle.price)}</div>
+                        <p class="card-description">${vehicle.description.substring(0, 85)}...</p>
+                        <button class="btn-secondary" onclick="openVehicleModal(${vehicle.id})">View Details</button>
+                    </div>
+                `;
+                vehicleGrid.appendChild(card);
+            });
+        }
+
+        // Populate Contact Form Vehicle Dropdown
+        function populateVehicleDropdown() {
+            vehicles.forEach(vehicle => {
+                const option = document.createElement('option');
+                option.value = vehicle.name;
+                option.textContent = `${vehicle.name} (${vehicle.year})`;
+                vehicleSelectModal.appendChild(option);
+            });
+        }
+
+        /* ==========================================================================
+           4. COMBINED SEARCH, FILTER, AND SORT LOGIC
+           ========================================================================== */
+        function filterAndSortVehicles() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const selectedCategory = categorySelect.value;
+            const selectedSort = sortSelect.value;
+
+            // 1. Filter Logic
+            let result = vehicles.filter(vehicle => {
+                const matchesSearch = vehicle.name.toLowerCase().includes(searchTerm) ||
+                                      vehicle.category.toLowerCase().includes(searchTerm) ||
+                                      vehicle.year.toString().includes(searchTerm);
+
+                const matchesCategory = selectedCategory === 'All' || vehicle.category === selectedCategory;
+
+                return matchesSearch && matchesCategory;
+            });
+
+            // 2. Sort Logic
+            if (selectedSort === 'price-asc') {
+                result.sort((a, b) => a.price - b.price);
+            } else if (selectedSort === 'price-desc') {
+                result.sort((a, b) => b.price - a.price);
+            } else if (selectedSort === 'name-asc') {
+                result.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (selectedSort === 'name-desc') {
+                result.sort((a, b) => b.name.localeCompare(a.name));
+            }
+
+            // Render output
+            renderVehicles(result);
+        }
+
+        /* ==========================================================================
+           5. MODAL POPUP CONTROLS
+           ========================================================================== */
+        function openVehicleModal(id) {
+            const vehicle = vehicles.find(v => v.id === id);
+            if (!vehicle) return;
+
+            modalImg.src = vehicle.image;
+            modalImg.alt = vehicle.name;
+            modalTitle.textContent = vehicle.name;
+            modalYear.textContent = `Year: ${vehicle.year}`;
+            modalCategory.textContent = vehicle.category;
+            modalPrice.textContent = formatUGX(vehicle.price);
+            modalDesc.textContent = vehicle.description;
+
+            modalInquireBtn.onclick = function() {
+                closeModal();
+                vehicleSelectModal.value = vehicle.name;
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            };
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        /* ==========================================================================
+           6. FORM VALIDATION LOGIC
+           ========================================================================== */
+        function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const selectedVehicle = vehicleSelectModal.value;
+            const message = document.getElementById('message').value.trim();
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Clear previous alerts
+            alertBox.style.display = 'none';
+            alertBox.className = 'alert-message';
+
+            // Validation checks
+            if (fullname === '') {
+                showAlert('Please enter your full name.', 'error');
+                return;
+            }
+
+            if (!emailRegex.test(email)) {
+                showAlert('Please enter a valid email address.', 'error');
+                return;
+            }
+
+            if (phone === '') {
+                showAlert('Please enter your phone number.', 'error');
+                return;
+            }
+
+            if (selectedVehicle === '') {
+                showAlert('Please select a vehicle of interest.', 'error');
+                return;
+            }
+
+            if (message === '') {
+                showAlert('Please write your message or inquiry.', 'error');
+                return;
+            }
+
+            // Success output
+            showAlert('Thank you! Your enquiry has been submitted successfully. Our team in Masaka will contact you shortly.', 'success');
+            enquiryForm.reset();
+        }
+
+        function showAlert(msg, type) {
+            alertBox.textContent = msg;
+            alertBox.classList.add(type === 'success' ? 'alert-success' : 'alert-error');
+            alertBox.style.display = 'block';
+        }
+
+        /* ==========================================================================
+           7. EVENT LISTENERS AND INITIALIZATION
+           ========================================================================== */
+        window.addEventListener('DOMContentLoaded', () => {
+            renderVehicles(vehicles);
+            populateVehicleDropdown();
+
+            // Search, Filter, Sort Listeners
+            searchInput.addEventListener('input', filterAndSortVehicles);
+            categorySelect.addEventListener('change', filterAndSortVehicles);
+            sortSelect.addEventListener('change', filterAndSortVehicles);
+
+            // Modal Listeners
+            modalCloseBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            // Mobile Navigation Toggle
+            hamburgerBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+
+            // Active Nav link highlight on click
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Form Submit Listener
+            enquiryForm.addEventListener('submit', handleFormSubmit);
+        });
+    </script>
+</body>
+</html>
